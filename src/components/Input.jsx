@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-// import { IconContext } from "react-icons/io5";
+import React, { useState, useContext } from 'react';
+import { AuthContext } from 'src/context/AuthContext';
 import { IoSend } from "react-icons/io5";
 import { FaMicrophone } from "react-icons/fa6";
 import { FaPhone } from "react-icons/fa6";
 const Input = ({ selectedUser }) => {
+  const { currentUser } = useContext(AuthContext);
   const [message, setMessage] = useState('');
 
   const sendMessage = async (e) => {

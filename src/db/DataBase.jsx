@@ -8,14 +8,14 @@ const UserData = [
 ];
 
 const MessageData = [
-    { senderId: '1', receiverId: '0', message: 'I think it is true', imageUrl: '', timestamp: '2020-01-02 22:34'},
-    { senderId: '4', receiverId: '0', message: 'I like beefstake', imageUrl: '', timestamp: '2020-01-02 22:36'},
-    { senderId: '5', receiverId: '0', message: 'why do you want this?', imageUrl: '', timestamp: '2020-01-02 22:50'},
-    { senderId: '0', receiverId: '2', message: 'I love coding', imageUrl: '', timestamp: '2020-01-02 22:31'},
-    { senderId: '0', receiverId: '3', message: 'Money is important but..', imageUrl: '', timestamp: '2020-01-02 22:42'},
-    { senderId: '3', receiverId: '0', message: 'Upwork is very popular', imageUrl: '', timestamp: '2020-01-02 22:35'},
-    { senderId: '6', receiverId: '0', message: 'Do you agree with me?', imageUrl: '', timestamp: '2020-01-02 22:37'},
-    { senderId: '0', receiverId: '5', message: 'This is fake', imageUrl: '', timestamp: '2020-01-02 22:18'},
+    { senderId: '1', receiverId: '8', message: 'I think it is true', imageUrl: '', timestamp: '2020-01-02 22:34'},
+    { senderId: '4', receiverId: '8', message: 'I like beefstake', imageUrl: '', timestamp: '2020-01-02 22:36'},
+    { senderId: '5', receiverId: '8', message: 'why do you want this?', imageUrl: '', timestamp: '2020-01-02 22:50'},
+    { senderId: '8', receiverId: '2', message: 'I love coding', imageUrl: '', timestamp: '2020-01-02 22:31'},
+    { senderId: '8', receiverId: '3', message: 'Money is important but..', imageUrl: '', timestamp: '2020-01-02 22:42'},
+    { senderId: '3', receiverId: '8', message: 'Upwork is very popular', imageUrl: '', timestamp: '2020-01-02 22:35'},
+    { senderId: '6', receiverId: '8', message: 'Do you agree with me?', imageUrl: '', timestamp: '2020-01-02 22:37'},
+    { senderId: '8', receiverId: '5', message: 'This is fake', imageUrl: '', timestamp: '2020-01-02 22:18'},
 ];
 
 export {

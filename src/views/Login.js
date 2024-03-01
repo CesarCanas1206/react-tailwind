@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from 'src/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setUser }) => {
+const Login = () => {
   const [loading, setLoading] = useState(false);
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = () => {
     setLoading(true);
 
-    // Perform login logic here (e.g., set user state)
-    setUser({ name: 'John Doe' });
+    login({ uid: '8', displayName: 'Oskar Molander', email: 'oskardev0112@gmail.com', photoURL: '', lasttime: 'Sun May 5 20:20 AM' });
     
     // Navigate to the '/dashboard' route
     navigate('/dashboard');

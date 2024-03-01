@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { AuthContext } from 'src/context/AuthContext';
 import { MessageData } from '../db/DataBase';
 import avatarSrc from '../assets/img/avatar.png';
 
 const Chats = ({ selectedUser }) => {
-  const currentUser = { uid: '0', displayName: 'John Doe', email: 'john@gmail.com', photoURL: '' };
+  const { currentUser } = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
   const chatRef = useRef(null);
 
   useEffect(() => {
-    setMessages(MessageData);
+    setMessages(filteredMessages => MessageData.filter(message => message.senderId === selectedUser.uid || message.receiverId === selectedUser.uid));
   }, [selectedUser, currentUser.uid]);
 
   useEffect(() => {
@@ -35,13 +36,13 @@ const Chats = ({ selectedUser }) => {
                 <img
                   src={message.photoURL}
                   alt={message.displayName}
-                  className='w-12 h-12 rounded-full'
+                  className='w-12 h-12 rounded-full mr-2'
                 />
               ) : (
                 <img
                   src={avatarSrc}
                   alt='avatar'
-                  className='w-12 h-12 rounded-full'
+                  className='w-12 h-12 rounded-full mr-2'
                 />
               )}
             </div>

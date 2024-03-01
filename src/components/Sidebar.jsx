@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import CurrentUserHeader from '../components/CurrentUserHeader';
 import SidebarHeader from '../components/SidebarHeader';
 import Search from '../components/Search';
 import Users from '../components/Users';
