@@ -1,18 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from 'src/context/AuthContext';
 import MainContent from '../components/MainContent';
 import Sidebar from '../components/Sidebar';
 import { UserData } from '../db/DataBase';
 
 const Dashboard = () => {
+  const { currentUser } = useContext(AuthContext);
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     const getUsers = async () => {
-      setUsers(UserData);
+      setUsers(filteredUsers => UserData.filter(user => user.uid !== currentUser.uid));
     };
     getUsers();
-  }, []);
+  }, [currentUser.uid]);
 
   const handleUserClick = (user) => {
     setSelectedUser(user);

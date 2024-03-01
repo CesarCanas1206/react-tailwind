@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import ChatPartnerHeader from '../components/ChatPartnerHeader';
 import Input from '../components/Input';
-
-const demoUser = { uid: '0', displayName: 'My First Meeting', email: 'sample@gmail.com', photoURL: '', lasttime: 'Fri Mar 1 06:20 AM' };
+import { AuthContext } from 'src/context/AuthContext';
 
 const Home = () => {
-
+  const { currentUser } = useContext(AuthContext);
   
   return (
     <div className='flex flex-row bg-slate-200 h-[calc(100vh-120px)]'>
@@ -17,7 +16,7 @@ const Home = () => {
             <h1>and Live Help</h1>
           </div>
           <div className='text-2xl text-slate-700 pb-8'>
-            <ul class="list-disc list-inside">
+            <ul className="list-disc list-inside">
               <li className='pb-2'>Post Job Description to See Expected Questions (with Answers)</li>
               <li className='pb-2'>Get Live Help During the interview</li>
               <li className='pb-2'>An AI Bot can stay with you assist you through your interview call or meeting</li>
@@ -27,9 +26,9 @@ const Home = () => {
           <button className=' bg-green-600 border-green-700 border-2 text-white text-2xl font-bold rounded-lg px-8 py-4'>Get Started</button>
         </div>
         <div className='bg-white w-3/5 flex-grow rounded-lg'>
-          <ChatPartnerHeader user={demoUser} />
+          <ChatPartnerHeader user={currentUser} />
           <div className='chats p-4 h-[calc(100vh-416px)] overflow-y-auto border-b-2 border-slate-200'></div>
-          <Input user={demoUser} />
+          <Input user={currentUser} />
         </div>
       </div>
     </div>

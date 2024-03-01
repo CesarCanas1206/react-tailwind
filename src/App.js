@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { AuthProvider } from './context/AuthContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Home from './views/Home';
 import Login from './views/Login';
 import Dashboard from './views/Dashboard';
 import Interview from './views/Interview';
+import Footer from './components/Footer';
 
 function App() {
-  const [user, setUser] = useState(null);
 
   return (
     <Router>
-      <div className='flex flex-col'>
-        <Header user={user} setUser={setUser} />
+      <AuthProvider>
+        <Header />
         <Routes>
-          <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/dashboard" element={<Dashboard user={user} />} />
-          <Route path="/interview" element={<Interview user={user} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/interview" element={<Interview />} />
           <Route path="/" element={<Home />} />
         </Routes>
         <Footer />
-      </div>
+      </AuthProvider>
     </Router>
   );
 }

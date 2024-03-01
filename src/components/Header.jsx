@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from 'src/context/AuthContext';
 import bannerSrc from '../assets/img/banner.png';
 import avatarSrc from '../assets/img/avatar.png';
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 
-const Header = ({ user, setUser }) => {
+const Header = () => {
+  const {currentUser} = useContext(AuthContext);
+
   return (
     <header className="bg-gray-100 text-gray-800 h-16 p-4 px-8">
       <div className="flex justify-between items-center">
@@ -22,7 +25,7 @@ const Header = ({ user, setUser }) => {
             </span>
             <h1 className=''>pricing</h1>
           </div>
-          {user ? (
+          {currentUser.uid != 0 ? (
             <div className='flex flex-row items-center gap-2'>
               <img
                 src={avatarSrc}
