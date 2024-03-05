@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from 'src/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Signin = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -20,8 +20,10 @@ const Login = () => {
     <div>
       <h1>Login Page</h1>
       <button onClick={handleLogin} disabled={loading}>{loading ? 'Logging in...' : 'Login'}</button>
+
+      <h1>Don't u have a account?</h1><a href='/register'>Sign up</a>
     </div>
   );
 };
 
-export default Login;
+export default Signin;

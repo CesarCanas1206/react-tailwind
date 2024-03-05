@@ -25,7 +25,7 @@ const Header = () => {
             </span>
             <h1 className=''>pricing</h1>
           </div>
-          {currentUser.uid != 0 ? (
+          {currentUser.uid !== '0' ? (
             <div className='flex flex-row items-center gap-2'>
               <img
                 src={avatarSrc}
