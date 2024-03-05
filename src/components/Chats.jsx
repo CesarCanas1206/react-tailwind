@@ -25,7 +25,7 @@ const Chats = ({ selectedUser }) => {
       {messages.map((message) => {
         return (
           <div
-            className={`relative flex ${message.senderId == currentUser.uid
+            className={`relative flex ${message.senderId === currentUser.uid
                 ? 'justify-end'
                 : 'justify-start'
               }`}
@@ -48,7 +48,7 @@ const Chats = ({ selectedUser }) => {
             </div>
             {message.imageUrl ? (
               <div
-                className={`shadow mb-1 p-1 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId == currentUser.uid
+                className={`shadow mb-1 p-1 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId === currentUser.uid
                     ? 'bg-indigo-400 text-white rounded-tr-none'
                     : 'bg-slate-200 text-slate-600 rounded-tl-none'
                   }`}
@@ -62,7 +62,7 @@ const Chats = ({ selectedUser }) => {
                   <p className='py-1 px-2'>{message.message}</p>
                   {message.timestamp && (
                     <p
-                      className={`text-[11px] ${message.senderId == currentUser.uid
+                      className={`text-[11px] ${message.senderId === currentUser.uid
                           ? 'text-slate-200'
                           : 'text-slate-400'
                         }`}
@@ -74,7 +74,7 @@ const Chats = ({ selectedUser }) => {
               </div>
             ) : (
               <div
-                className={`flex items-end shadow mb-1 py-1 px-2 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId == currentUser.uid
+                className={`flex items-end shadow mb-1 py-1 px-2 rounded-lg max-w-[80%] lg:max-w-[60%] ${message.senderId === currentUser.uid
                     ? 'bg-indigo-400 text-white rounded-tr-none'
                     : 'bg-slate-200 text-slate-600 rounded-tl-none'
                   }`}
@@ -82,7 +82,7 @@ const Chats = ({ selectedUser }) => {
                 <p className='py-1 px-2'>{message.message}</p>
                 {message.timestamp && (
                   <p
-                    className={`text-[11px] ${message.senderId == currentUser.uid
+                    className={`text-[11px] ${message.senderId === currentUser.uid
                         ? 'text-slate-200'
                         : 'text-slate-400'
                       }`}
