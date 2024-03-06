@@ -18,6 +18,8 @@ const Signup = () => {
     avatar: null
   });
 
+  const [avatar, setAvatar] = useState(null);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -29,14 +31,13 @@ const Signup = () => {
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
 
-    // Check if the uploaded file is an image file
     if (file.type.startsWith('image/')) {
       setFormData({ ...formData, avatar: file });
-      // You can show a success message here if needed
+      const img = new FormData();
+      img.append('file', file);
+      setAvatar(img);
     } else {
-      // File is not an image file, you can show an error message
       alert('Please upload an image file');
-      // You can also reset the file input if needed
       e.target.value = null;
     }
   };
@@ -57,7 +58,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/signin', {
+      let response = await fetch('http://localhost:5000/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,15 +66,23 @@ const Signup = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      let data = await response.json();
       console.log(data);
+      console.log(formData.firstname);
+      setAvatar({...avatar, 'name':formData.firstname});
+
+      // response = await fetch('http://localhost:5000/upload', avatar, {
+      //   headers: { 'Content-Type': 'multipart/form-data' }
+      // });
+      // data = await response.json();
+      console.log(avatar);
     } catch (error) {
       console.error('Error registering user:', error);
     }
   };
 
   return (
-    <div className='w-full  h-[calc(100vh-120px)] bg-slate-200 border-y-2 border-slate-300 flex flex-row p-12 gap-16'>
+    <div className='flex flex-row w-full h-[calc(100vh-120px)] bg-slate-200 border-y-2 border-slate-300 pt-8 px-16 pb-32 gap-8'>
       <div className='w-2/5 h-full border-2 border-slate-300 rounded-lg p-4 text-slate-500'>
         <h2 className=' text-4xl font-semibold mb-4 text-center'>Signup</h2>
         <form onSubmit={handleSubmit}>
@@ -83,7 +92,7 @@ const Signup = () => {
                 <svg viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg" className='absolute'>
                   <path id="circlePath" d="M168 84A84 84 0 0 0 0 84A84 84 0 0 0 168 84" fill="none" />
                   <text>
-                    <textPath xlinkHref="#circlePath" startOffset="59%" className=' text-xl font-medium' fill="gray"> 
+                    <textPath xlinkHref="#circlePath" startOffset="59%" className=' text-xl font-medium' fill="gray">
                       Upload Your Avatar
                     </textPath>
                   </text>
@@ -101,11 +110,11 @@ const Signup = () => {
                   <div
                     htmlFor="avatarInput"
                     onClick={handleAvatarClick}
-                    className=" flex w-32 h-32 px-10 py-6 rounded-full cursor-pointer border-2 border-slate-400">
+                    className=" flex w-32 h-32 rounded-full cursor-pointer border-2 border-slate-400">
                     {formData.avatar ? (
-                      <img src={URL.createObjectURL(formData.avatar)} alt="Avatar" className="w-full h-full rounded-full object-cover" />
+                      <img src={URL.createObjectURL(formData.avatar)} alt="Avatar" className="w-32 h-32 rounded-full object-cover" />
                     ) : (
-                      <span className=" text-6xl text-gray-600">+</span>
+                      <span className=" text-6xl text-gray-600 mx-10 my-6">+</span>
                     )}
                   </div>
                 </div>
